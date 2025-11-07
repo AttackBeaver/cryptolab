@@ -1,0 +1,13 @@
+streamlit
+cryptography
+numpy
+matplotlib
+plotly
+altair
+pandas
+pycryptodome
+sympy           # Для математических вычислений в RSA
+scipy           # Для статистического анализа в криптоатаках
+networkx        # Для визуализации протоколов
+Pillow          # Для работы с изображениями
+streamlit-ace   # Для вставки блоков кода
