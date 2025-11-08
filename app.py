@@ -24,7 +24,6 @@ class CryptoLabApp:
     def render_sidebar(self):
         """Отрисовка навигации в сайдбаре"""
         st.sidebar.title("🔐 CryptoLab")
-        st.sidebar.markdown("---")
         
         # Выбор модуля
         module_names = {name: module.name for name, module in self.modules.items()}
@@ -36,12 +35,9 @@ class CryptoLabApp:
         
         # Информация о выбранном модуле
         current_module = self.modules[selected_module]
-        st.sidebar.markdown("---")
         st.sidebar.info(f"""
         **{current_module.name}**
-        
         {current_module.description}
-        
         """)
         
         st.sidebar.markdown("---")
