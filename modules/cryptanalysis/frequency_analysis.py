@@ -9,8 +9,8 @@ import string
 class FrequencyAnalysisModule(CryptoModule):
     def __init__(self):
         super().__init__()
-        self.name = "Частотный анализ шифра Цезаря"
-        self.description = "Взлом шифра Цезаря методом частотного анализа"
+        self.name = "Взлом шифра Цезаря"
+        self.description = "Частотный анализ шифра Цезаря"
         self.complexity = "intermediate"
         self.category = "cryptanalysis"
         self.icon = ""
