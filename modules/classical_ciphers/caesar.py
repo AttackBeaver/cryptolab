@@ -5,9 +5,11 @@ class CaesarCipherModule(CryptoModule):
     def __init__(self):
         super().__init__()
         self.name = "Шифр Цезаря"
-        self.description = "Классический шифр замены"
+        self.description = "Классический шифр замены с сдвигом"
         self.complexity = "beginner"
         self.category = "classical"
+        self.icon = ""
+        self.order = 1
     
     def render(self):
         st.title("🔐 Шифр Цезаря")
