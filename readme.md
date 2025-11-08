@@ -11,6 +11,32 @@
 - Теория по криптографии
 - Визуальная реализация некоторых шифров
 
+## Структура приложения
+
+``` txt
+cryptolab/
+│
+├── app.py                     
+├── requirements.txt
+├── modules/
+│   ├─── classical_ciphers/
+│   │    ├── caesar.py
+│   │    └── vigenere.py
+│   ├─── cryptanalysis/
+│   │    ├── frequency_analysis.py
+│   │    └── vigenere_break.py
+│   ├─── hash_functions/
+│   │    └── hash_demo.py
+│   ├─── modern_crypto/
+│   │    └── rsa_visualizer.py
+│   ├─── protocols/
+│   │    ├── diffie_hellman.py
+│   │    └── digital_signature.py
+│   └─── base_module.py
+└── utils/
+    └─── module_loader.py
+```
+
 ## Запуск проекта
 
 1. Клонировать репозиторий или скачать проект.
