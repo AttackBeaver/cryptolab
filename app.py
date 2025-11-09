@@ -53,11 +53,12 @@ class CryptoLabApp:
             "cryptanalysis": {"icon": "🔍", "name": "Криптоанализ"},
             "modern": {"icon": "💻", "name": "Современная криптография"},
             "protocols": {"icon": "🔄", "name": "Протоколы"},
-            "hash": {"icon": "📊", "name": "Хеш-функции"}
+            "hash": {"icon": "📊", "name": "Хеш-функции"},
+            "stream": {"icon": "🎲", "name": "Поточное шифрование"}
         }
         
         # Порядок категорий
-        category_order = ["classical", "cryptanalysis", "modern", "protocols", "hash"]
+        category_order = ["classical", "cryptanalysis", "modern", "protocols", "hash", "stream"]
         
         # Отрисовываем категории и модули
         for category in category_order:
