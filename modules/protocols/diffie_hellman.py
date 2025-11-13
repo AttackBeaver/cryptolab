@@ -13,7 +13,7 @@ class DiffieHellmanModule(CryptoModule):
         self.description = "Обмен ключами по открытому каналу"
         self.category = "protocols"
         self.icon = ""
-        self.order = 1
+        self.order = 2
         
         # Предустановленные параметры для демонстрации
         self.demo_parameters = {

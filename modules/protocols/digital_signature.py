@@ -18,7 +18,7 @@ class DigitalSignatureModule(CryptoModule):
         self.description = "Аутентификация и целостность цифровых документов"
         self.category = "protocols"
         self.icon = ""
-        self.order = 2
+        self.order = 3
     
     def render(self):
         st.title("🖊️ Электронные подписи")

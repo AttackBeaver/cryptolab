@@ -10,11 +10,11 @@ from sympy import isprime, mod_inverse
 class RSAVisualizerModule(CryptoModule):
     def __init__(self):
         super().__init__()
-        self.name = "RSA - Шифрование и ключи"
+        self.name = "RSA"
         self.description = "Визуализация алгоритма RSA и генерации ключей"
         self.category = "modern"
         self.icon = ""
-        self.order = 1
+        self.order = 3
         
         # Простые числа для демонстрации (небольшие для наглядности)
         self.demo_primes = {
