@@ -14,7 +14,7 @@ class RSAVisualizerModule(CryptoModule):
         self.description = "Визуализация алгоритма RSA и генерации ключей"
         self.category = "modern"
         self.icon = ""
-        self.order = 3
+        self.order = 5
         
         # Простые числа для демонстрации (небольшие для наглядности)
         self.demo_primes = {

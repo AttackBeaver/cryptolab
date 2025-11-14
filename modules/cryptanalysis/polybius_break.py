@@ -14,7 +14,7 @@ class PolybiusBreakModule(CryptoModule):
         self.description = "Методы криптоанализа и взлома квадрата Полибия"
         self.category = "cryptanalysis"
         self.icon = ""
-        self.order = 4
+        self.order = 3
     
     def render(self):
         st.title("🔓 Взлом Полибианского квадрата")
