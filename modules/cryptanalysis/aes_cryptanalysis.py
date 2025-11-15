@@ -58,9 +58,7 @@ class AESCryptanalysisModule(CryptoModule):
             - Устойчив к дифференциальному и линейному анализу
             - Широкое применение и тестирование
             """)
-        
-        st.markdown("---")
-        
+                
         # Выбор типа атаки
         attack_type = st.radio(
             "Тип криптоанализа:",
