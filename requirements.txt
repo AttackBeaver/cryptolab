@@ -14,4 +14,3 @@ Pillow          # Для работы с изображениями
 streamlit-ace   # Для вставки блоков кода
 seaborn
 qrcode
-cv2
