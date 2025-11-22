@@ -180,7 +180,7 @@ class WEPModule(CryptoModule):
         with col1:
             st.subheader("⚙️ Параметры шифрования")
             
-            # Выбор ключа
+            # Используем локальные переменные вместо session_state
             key_length = st.selectbox(
                 "Длина ключа:",
                 list(self.key_lengths.keys()),
@@ -192,7 +192,6 @@ class WEPModule(CryptoModule):
             if st.button("🎲 Сгенерировать ключ WEP", key="gen_wep_key"):
                 key = secrets.token_hex(key_length // 8)
                 st.session_state.wep_key = key
-                st.session_state.wep_key_length = key_length
             
             key_input = st.text_input(
                 "Ключ WEP (hex):",
@@ -211,49 +210,49 @@ class WEPModule(CryptoModule):
             if st.button("🔒 Зашифровать WEP", key="encrypt_wep_btn"):
                 if key_input and plaintext:
                     # Генерируем IV
-                    iv = secrets.token_hex(3)  # 24 бита = 3 байта
+                    iv = secrets.token_hex(3)
                     
                     # Шифруем данные
                     encrypted_data, icv = self.wep_encrypt(plaintext, key_input, iv)
                     
+                    # Сохраняем только результаты шифрования
                     st.session_state.wep_packet = WEPPacket(
                         iv=iv,
                         data=encrypted_data,
                         icv=icv
                     )
-                    st.session_state.wep_plaintext = plaintext
+                    st.session_state.current_plaintext = plaintext
                     st.rerun()
-        
-        with col2:
-            st.subheader("📄 Результат шифрования")
-            
-            if 'wep_packet' in st.session_state:
-                packet = st.session_state.wep_packet
+            with col2:
+                st.subheader("📄 Результат шифрования")
                 
-                st.success("✅ Данные зашифрованы с помощью WEP!")
-                
-                st.text_input(
-                    "Вектор инициализации (IV):",
-                    packet.iv,
-                    key="iv_display"
-                )
-                
-                st.text_area(
-                    "Зашифрованные данные:",
-                    packet.data,
-                    height=100,
-                    key="enc_data_display"
-                )
-                
-                st.text_input(
-                    "ICV (Integrity Check Value):",
-                    packet.icv,
-                    key="icv_display"
-                )
-                
-                # Детали шифрования
-                with st.expander("🔍 Детали процесса шифрования"):
-                    self.display_encryption_details(st.session_state.wep_plaintext, packet)
+                if 'wep_packet' in st.session_state:
+                    packet = st.session_state.wep_packet
+                    
+                    st.success("✅ Данные зашифрованы с помощью WEP!")
+                    
+                    st.text_input(
+                        "Вектор инициализации (IV):",
+                        packet.iv,
+                        key="iv_display"
+                    )
+                    
+                    st.text_area(
+                        "Зашифрованные данные:",
+                        packet.data,
+                        height=100,
+                        key="enc_data_display"
+                    )
+                    
+                    st.text_input(
+                        "ICV (Integrity Check Value):",
+                        packet.icv,
+                        key="icv_display"
+                    )
+                    
+                    # Детали шифрования
+                    with st.expander("🔍 Детали процесса шифрования"):
+                        self.display_encryption_details(st.session_state.wep_plaintext, packet)
 
     def render_attacks_section(self):
         """Демонстрация атак на WEP"""
