@@ -25,13 +25,13 @@ class CryptoLabApp:
     def render_sidebar(self):
         """Отрисовка чистого и минималистичного сайдбара"""       
         # Заголовок
-        st.sidebar.title("🔐 CryptoLab")
+        st.sidebar.title("CryptoLab")
         st.sidebar.caption("Лаборатория криптографии")
         
         # Кнопка "На главную"
         if st.session_state.get('selected_module_id'):
             if st.sidebar.button(
-                "🏠 На главную",
+                "🏠",
                 key="home_button",
                 use_container_width=True,
                 type="secondary"
@@ -49,13 +49,13 @@ class CryptoLabApp:
         
         # Конфигурация категорий
         category_config = {
-            "math": {"icon": "🧮", "name": "Математические основы криптографии"},
-            "classical": {"icon": "📜", "name": "Классические шифры"},
-            "cryptanalysis": {"icon": "🔍", "name": "Криптоанализ"},
-            "modern": {"icon": "💻", "name": "Современная криптография"},
-            "protocols": {"icon": "🔄", "name": "Протоколы"},
-            "hash": {"icon": "📊", "name": "Хеш-функции"},
-            "stream": {"icon": "🎲", "name": "Поточное шифрование"}
+            "math": {"icon": "", "name": "Математические основы криптографии"},
+            "classical": {"icon": "", "name": "Классические шифры"},
+            "cryptanalysis": {"icon": "", "name": "Криптоанализ"},
+            "modern": {"icon": "", "name": "Современная криптография"},
+            "protocols": {"icon": "", "name": "Протоколы"},
+            "hash": {"icon": "", "name": "Хеш-функции"},
+            "stream": {"icon": "", "name": "Поточное шифрование"}
         }
         
         # Порядок категорий
@@ -64,7 +64,7 @@ class CryptoLabApp:
         # Отрисовываем категории и модули
         for category in category_order:
             if category in self.categories and self.categories[category]:
-                config = category_config.get(category, {"icon": "📁", "name": category.title()})
+                config = category_config.get(category, {"icon": "", "name": category.title()})
                 
                 # Expander для категории
                 with st.sidebar.expander(f"{config['icon']} {config['name']}", expanded=False):
@@ -105,7 +105,7 @@ class CryptoLabApp:
         
         # Основное описание
         st.markdown("""
-        ### 🎓 Образовательная платформа
+        ### Образовательная платформа
         
         **CryptoLab** - это интерактивная среда для изучения криптографических алгоритмов и методов защиты информации, 
         разработанная для студентов направлений **ИТ и Информационная безопасность**.
@@ -116,16 +116,16 @@ class CryptoLabApp:
         
         with col6:
             st.markdown("""
-            ### 🔍 Что вы найдете здесь:
+            ### Что вы найдете здесь:
             
-            - **📜 Классические шифры** - исторические алгоритмы от Цезаря до Виженера
-            - **🔍 Криптоанализ** - методы взлома и анализа шифров
-            - **💻 Современные алгоритмы** - актуальные криптографические методы
-            - **🔄 Интерактивные демонстрации** - визуализация работы алгоритмов
+            - **Классические шифры** - исторические алгоритмы от Цезаря до Виженера
+            - **Криптоанализ** - методы взлома и анализа шифров
+            - **Современные алгоритмы** - актуальные криптографические методы
+            - **Интерактивные демонстрации** - визуализация работы алгоритмов
             """)
         with col7:
             st.markdown("""
-            ### 🚀 Как начать:
+            ### Как начать:
             
             Выберите интересующий модуль в **левом меню** → изучите теорию → экспериментируйте с параметрами → анализируйте результаты.
             
@@ -137,7 +137,7 @@ class CryptoLabApp:
         
         with col1:
             # Информация о дисциплинах
-            st.markdown("### 📚 Дисциплины")
+            st.markdown("### Дисциплины")
             st.markdown("""
             - **Криптографические средства защиты информации**
             - **Криптографические методы защиты информации**
@@ -145,10 +145,9 @@ class CryptoLabApp:
             """)
         with col2:
             # Минималистичная статистика
-            st.markdown("### 📊 О платформе")
+            st.markdown("### О платформе")
             st.markdown(f"""
             - **Модулей:** {len(self.modules)}
-            - **Алгоритмов:** {len([m for m in self.modules.values()])}
             - **Обновлено:** {datetime.now().strftime('%d.%m.%Y')}
             """)
         
@@ -158,23 +157,21 @@ class CryptoLabApp:
         col3, col4, col5 = st.columns(3)
         
         with col3:
-            st.markdown("### 🎯 Образовательные цели")
+            st.markdown("### Образовательные цели")
             st.markdown("""
             - Понимание принципов работы алгоритмов
             - Развитие аналитического мышления
-            - Приобретение практических навыков
             - Визуализация криптографических процессов
             """)
         with col4:
-            st.markdown("### 💡 Методики")
+            st.markdown("### Методики")
             st.markdown("""
             - Интерактивные эксперименты
             - Пошаговая визуализация
-            - Практические задания
             - Анализ результатов
             """)
         with col5:
-            st.markdown("### 🛠 Технологии")
+            st.markdown("### Технологии")
             st.markdown("""
             - Streamlit
             - Cryptography
@@ -183,7 +180,7 @@ class CryptoLabApp:
             """)
     
     def render_footer(self):
-        """Чистый минималистичный футер"""
+        """Футер"""
         st.markdown("---")
         current_year = datetime.now().year
         st.markdown(

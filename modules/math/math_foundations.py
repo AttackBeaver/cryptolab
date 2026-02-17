@@ -18,11 +18,11 @@ class MathFoundationsModule(CryptoModule):
         self.order = 0  # Базовый модуль, должен быть первым
     
     def render(self):
-        st.title("🧮 Математические основы криптографии")
+        st.title("Математические основы криптографии")
         st.subheader("Теория чисел, алгебра и эллиптические кривые")
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка", expanded=False):
+        with st.expander("Теоретическая справка", expanded=False):
             st.markdown("""
             ### Математический фундамент криптографии
             
@@ -46,28 +46,28 @@ class MathFoundationsModule(CryptoModule):
         # Выбор раздела
         section = st.radio(
             "Выберите раздел:",
-            ["📐 Алгоритм Евклида и НОД", 
-             "➗ Линейные диофантовы уравнения", 
-             "🔢 Теория чисел и простые числа",
-             "📈 Эллиптические кривые",
-             "🎯 Интегральные примеры"],
+            ["Алгоритм Евклида и НОД", 
+             "Линейные диофантовы уравнения", 
+             "Теория чисел и простые числа",
+             "Эллиптические кривые",
+             "Интегральные примеры"],
             horizontal=True
         )
         
-        if section == "📐 Алгоритм Евклида и НОД":
+        if section == "Алгоритм Евклида и НОД":
             self.render_euclidean_algorithm()
-        elif section == "➗ Линейные диофантовы уравнения":
+        elif section == "Линейные диофантовы уравнения":
             self.render_diophantine_equations()
-        elif section == "🔢 Теория чисел и простые числа":
+        elif section == "Теория чисел и простые числа":
             self.render_number_theory()
-        elif section == "📈 Эллиптические кривые":
+        elif section == "Эллиптические кривые":
             self.render_elliptic_curves()
         else:
             self.render_integrated_examples()
     
     def render_euclidean_algorithm(self):
         """Алгоритм Евклида и расширенный алгоритм Евклида"""
-        st.markdown("### 📐 Алгоритм Евклида и НОД")
+        st.markdown("### Алгоритм Евклида и НОД")
         
         col1, col2 = st.columns(2)
         
@@ -86,7 +86,7 @@ class MathFoundationsModule(CryptoModule):
         with col2:
             st.markdown("#### Результаты вычислений")
             
-            if st.button("🧮 Вычислить НОД", type="primary"):
+            if st.button("Вычислить НОД", type="primary"):
                 with st.spinner("Вычисляю..."):
                     if algorithm_type == "Обычный алгоритм Евклида":
                         self.calculate_gcd(a, b)
@@ -95,7 +95,7 @@ class MathFoundationsModule(CryptoModule):
         
         # Теоретическое объяснение
         st.markdown("---")
-        st.markdown("#### 📚 Теория алгоритма Евклида")
+        st.markdown("#### Теория алгоритма Евклида")
         
         st.latex(r"gcd(a, b) = gcd(b, a \mod b)")
         st.write("""
@@ -136,7 +136,7 @@ class MathFoundationsModule(CryptoModule):
         st.success(f"**НОД({a}, {b}) = {result}**")
         
         # Показываем шаги
-        st.markdown("#### 📋 Шаги алгоритма")
+        st.markdown("#### Шаги алгоритма")
         st.dataframe(pd.DataFrame(steps), use_container_width=True, hide_index=True)
         
         # Визуализация
@@ -146,7 +146,7 @@ class MathFoundationsModule(CryptoModule):
         if result == 1:
             st.info(f"✅ Числа {a} и {b} взаимно просты")
         else:
-            st.info(f"📊 Числа {a} и {b} имеют общий делитель {result}")
+            st.info(f"Числа {a} и {b} имеют общий делитель {result}")
     
     def calculate_extended_gcd(self, a, b):
         """Расширенный алгоритм Евклида"""
@@ -198,17 +198,17 @@ class MathFoundationsModule(CryptoModule):
         # Проверка
         verification = a * x + b * y
         if verification == gcd_val:
-            st.success("✅ Проверка пройдена!")
+            st.success("Проверка пройдена!")
         else:
-            st.error("❌ Ошибка в вычислениях!")
+            st.error("Ошибка в вычислениях!")
         
         # Показываем шаги
-        st.markdown("#### 📋 Шаги расширенного алгоритма")
+        st.markdown("#### Шаги расширенного алгоритма")
         st.dataframe(pd.DataFrame(steps), use_container_width=True, hide_index=True)
         
         # Применение в криптографии
         st.markdown("---")
-        st.markdown("#### 🎯 Применение в криптографии")
+        st.markdown("#### Применение в криптографии")
         
         if gcd_val == 1:
             st.info(f"**Обратный элемент:** {a}⁻¹ mod {b} = {x % b}")
@@ -233,7 +233,7 @@ class MathFoundationsModule(CryptoModule):
             b = st.number_input("Коэффициент b:", value=98, key="dioph_b") 
             c = st.number_input("Правая часть c:", value=14, key="dioph_c")
             
-            if st.button("🔍 Решить уравнение", type="primary"):
+            if st.button("Решить уравнение", type="primary"):
                 with st.spinner("Решаю диофантово уравнение..."):
                     self.solve_diophantine_equation(a, b, c)
         
@@ -285,13 +285,13 @@ class MathFoundationsModule(CryptoModule):
         st.info(f"**Проверка:** {a}×{x_part} + {b}×{y_part} = {a*x_part + b*y_part}")
         
         # Общее решение
-        st.markdown("#### 📊 Общее решение")
+        st.markdown("#### Общее решение")
         st.latex(f"x = {x_part} + {b1}t")
         st.latex(f"y = {y_part} - {a1}t")
         st.latex(r"t \in \mathbb{Z}")
         
         # Находим несколько конкретных решений
-        st.markdown("#### 🔢 Конкретные решения")
+        st.markdown("#### Конкретные решения")
         solutions = []
         for t in range(-3, 4):
             x_sol = x_part + b1 * t
@@ -321,7 +321,7 @@ class MathFoundationsModule(CryptoModule):
     
     def render_number_theory(self):
         """Теория чисел: простые числа, факторизация, тесты простоты"""
-        st.markdown("### 🔢 Теория чисел и простые числа")
+        st.markdown("### Теория чисел и простые числа")
         
         col1, col2 = st.columns(2)
         
@@ -336,7 +336,7 @@ class MathFoundationsModule(CryptoModule):
                 horizontal=False
             )
             
-            if st.button("🔬 Анализировать число", type="primary"):
+            if st.button("Анализировать число", type="primary"):
                 with st.spinner("Выполняю анализ..."):
                     if analysis_type == "Проверка простоты":
                         self.check_primality(number)
@@ -443,7 +443,7 @@ class MathFoundationsModule(CryptoModule):
         st.latex(f"\\phi({n}) = {phi}")
         
         # Объяснение вычисления
-        st.markdown("#### 📊 Вычисление функции Эйлера")
+        st.markdown("#### Вычисление функции Эйлера")
         
         if n > 1:
             factors = factorint(n)
@@ -455,7 +455,7 @@ class MathFoundationsModule(CryptoModule):
             st.latex(f"\\phi({n}) = {formula} = {phi}")
         
         # Числа, взаимно простые с n
-        st.markdown("#### 🔢 Числа, взаимно простые с n")
+        st.markdown("#### Числа, взаимно простые с n")
         coprime_numbers = [i for i in range(1, min(n, 101)) if math.gcd(i, n) == 1]
         
         if len(coprime_numbers) <= 20:
@@ -517,7 +517,7 @@ class MathFoundationsModule(CryptoModule):
     
     def render_elliptic_curves(self):
         """Эллиптические кривые и их применение в криптографии"""
-        st.markdown("### 📈 Эллиптические кривые")
+        st.markdown("### Эллиптические кривые")
         
         st.info("""
         **Уравнение эллиптической кривой:** y² = x³ + ax + b  
@@ -539,7 +539,7 @@ class MathFoundationsModule(CryptoModule):
                 horizontal=False
             )
             
-            if st.button("📊 Построить кривую", type="primary"):
+            if st.button("Построить кривую", type="primary"):
                 with st.spinner("Строю эллиптическую кривую..."):
                     if operation == "Визуализация кривой":
                         self.visualize_elliptic_curve(a, b, modulus)
@@ -631,7 +631,7 @@ class MathFoundationsModule(CryptoModule):
         st.pyplot(fig)
         
         # Дополнительная информация
-        st.markdown("#### 🎯 Криптографическое применение")
+        st.markdown("#### Криптографическое применение")
         st.write("""
         **Преимущества ECC:**
         - **Меньшие ключи**: 256-битный ECC ключ ≈ 3072-битный RSA ключ
@@ -646,7 +646,7 @@ class MathFoundationsModule(CryptoModule):
     
     def render_integrated_examples(self):
         """Интегральные примеры применения математики в криптографии"""
-        st.markdown("### 🎯 Интегральные примеры")
+        st.markdown("### Интегральные примеры")
         
         example_type = st.selectbox(
             "Выберите пример:",
@@ -669,7 +669,7 @@ class MathFoundationsModule(CryptoModule):
     
     def demo_rsa_math(self):
         """Демонстрация математики RSA"""
-        st.markdown("#### 🔐 Математика RSA")
+        st.markdown("#### Математика RSA")
         
         st.info("""
         **Этапы RSA:**
@@ -687,7 +687,7 @@ class MathFoundationsModule(CryptoModule):
             q = st.number_input("Простое q:", min_value=2, max_value=1000, value=53)
             e = st.number_input("Публичная экспонента e:", min_value=3, max_value=1000, value=17)
             
-            if st.button("🧮 Показать математику RSA", type="primary"):
+            if st.button("Показать математику RSA", type="primary"):
                 # Проверяем простоту
                 if not (isprime(p) and isprime(q)):
                     st.error("p и q должны быть простыми!")
@@ -798,7 +798,7 @@ class MathFoundationsModule(CryptoModule):
     
     def visualize_euclidean_algorithm(self, steps, a, b, result):
         """Визуализирует алгоритм Евклида"""
-        st.markdown("#### 📊 Визуализация алгоритма")
+        st.markdown("#### Визуализация алгоритма")
         
         fig, ax = plt.subplots(figsize=(10, 6))
         
@@ -825,7 +825,7 @@ class MathFoundationsModule(CryptoModule):
         if len(solutions) < 2:
             return
         
-        st.markdown("#### 📈 Визуализация решений")
+        st.markdown("#### Визуализация решений")
         
         fig, ax = plt.subplots(figsize=(10, 6))
         
@@ -850,7 +850,7 @@ class MathFoundationsModule(CryptoModule):
     
     def visualize_prime_numbers(self, n):
         """Визуализирует простые числа вокруг заданного числа"""
-        st.markdown("#### 📊 Простые числа вокруг")
+        st.markdown("#### Простые числа вокруг")
         
         # Находим простые числа в окрестности
         start = max(2, n - 20)
@@ -889,7 +889,7 @@ class MathFoundationsModule(CryptoModule):
     
     def visualize_factorization(self, n, factors):
         """Визуализирует факторизацию числа"""
-        st.markdown("#### 📈 Визуализация факторизации")
+        st.markdown("#### Визуализация факторизации")
         
         fig, ax = plt.subplots(figsize=(10, 6))
         

@@ -5,7 +5,7 @@ class CryptoModule(ABC):
         self.name = "Unnamed Module"
         self.description = "No description"
         self.category = "uncategorized"
-        self.icon = "🔒"  # Иконка для отображения в интерфейсе
+        self.icon = ""  # Иконка для отображения в интерфейсе
         self.order = 0  # Порядок отображения в категории
     
     @abstractmethod
