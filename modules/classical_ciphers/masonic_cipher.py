@@ -14,11 +14,11 @@ class MasonicCipherModule(CryptoModule):
         self.order = 4
     
     def render(self):
-        st.title("🔷 Шифр Масонов (Pigpen Cipher)")
+        st.title("Шифр Масонов (Pigpen Cipher)")
         st.subheader("Визуальный шифр с решетками и точками")
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка", expanded=False):
+        with st.expander("Теоретическая справка", expanded=False):
             st.markdown("""
             ### Шифр Масонов (Pigpen Cipher)
             
@@ -134,7 +134,7 @@ class MasonicCipherModule(CryptoModule):
     
     def display_masonic_grids(self, grids, variant, language):
         """Отображает решетки Масонов"""
-        st.markdown("### 🎯 Решетки Масонов")
+        st.markdown("### Решетки Масонов")
         
         num_grids = len(grids)
         cols = 2  # Показываем по 2 решетки в строке
@@ -159,7 +159,7 @@ class MasonicCipherModule(CryptoModule):
         st.pyplot(fig)
         
         # Легенда
-        st.markdown("#### 📖 Легенда символов")
+        st.markdown("#### Легенда символов")
         
         if variant == "Символьный":
             st.info("""
@@ -271,12 +271,12 @@ class MasonicCipherModule(CryptoModule):
     
     def render_encryption_decryption(self, grids, language, variant):
         """Отрисовывает интерфейс шифрования и дешифрования"""
-        st.markdown("### 🔐 Шифрование и дешифрование")
+        st.markdown("### Шифрование и дешифрование")
         
         col1, col2 = st.columns(2)
         
         with col1:
-            st.markdown("#### 🔒 Шифрование")
+            st.markdown("#### Шифрование")
             plaintext = st.text_area(
                 "Текст для шифрования:",
                 "HELLO" if language == "Английский" else "ПРИВЕТ",
@@ -297,7 +297,7 @@ class MasonicCipherModule(CryptoModule):
                     st.error("Введите текст для шифрования!")
         
         with col2:
-            st.markdown("#### 🔓 Дешифрование")
+            st.markdown("#### Дешифрование")
             ciphertext = st.text_area(
                 "Текст для дешифрования:",
                 "◸ ◹ ◺ ◺ ◻" if language == "Английский" else "◸ ◹ ◺ ◺ ◻",
@@ -418,7 +418,7 @@ class MasonicCipherModule(CryptoModule):
     
     def render_interactive_mode(self, grids, language, variant):
         """Интерактивный режим изучения шифра"""
-        st.markdown("### 🎮 Интерактивный режим")
+        st.markdown("### Интерактивный режим")
         
         st.info("Выберите букву чтобы увидеть её представление в шифре Масонов")
         
@@ -452,7 +452,7 @@ class MasonicCipherModule(CryptoModule):
                 st.metric("Расположение", grid_info.split('(')[0].strip())
             
             # Визуализация выбранной буквы
-            st.markdown("#### 🎯 Визуализация символа")
+            st.markdown("#### Визуализация символа")
             self.visualize_single_symbol(selected_letter, grids, mapping)
     
     def visualize_single_symbol(self, letter, grids, mapping):
@@ -490,7 +490,7 @@ class MasonicCipherModule(CryptoModule):
     
     def render_historical_context(self):
         """Исторический контекст шифра Масонов"""
-        st.markdown("### 📚 Исторический контекст")
+        st.markdown("### Исторический контекст")
         
         st.markdown("""
         **Масонство и криптография:**
@@ -519,7 +519,7 @@ class MasonicCipherModule(CryptoModule):
         """)
         
         # Дополнительная визуализация масонских символов
-        st.markdown("#### 🎨 Масонские символы")
+        st.markdown("#### Масонские символы")
         
         fig, axes = plt.subplots(2, 3, figsize=(12, 8))
         symbols_info = [

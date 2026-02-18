@@ -14,10 +14,10 @@ class TrithemiusCipherModule(CryptoModule):
         self.order = 7
     
     def render(self):
-        st.title("🔠 Шифр Трисимуса")
+        st.title("Шифр Трисимуса")
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка", expanded=False):
+        with st.expander("Теоретическая справка", expanded=False):
             st.markdown("""
             **Шифр Трисимуса** (или квадрат Трисимуса) - полиалфавитный шифр, разработанный немецким монахом Иоганном Тритемием в XV веке.
             
@@ -101,7 +101,7 @@ class TrithemiusCipherModule(CryptoModule):
     
     def render_table_method(self, language):
         """Отрисовывает табличный метод шифрования"""
-        st.subheader("📊 Табличный метод")
+        st.subheader("Табличный метод")
         
         # Создаем и показываем таблицу
         table = self.create_trithemius_table(language)
@@ -113,7 +113,7 @@ class TrithemiusCipherModule(CryptoModule):
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("🔒 Шифрование")
+            st.subheader("Шифрование")
             plaintext = st.text_area(
                 "Исходный текст:",
                 "HELLO" if language == "Английский" else "ПРИВЕТ",
@@ -131,7 +131,7 @@ class TrithemiusCipherModule(CryptoModule):
                     self.show_encryption_process(plaintext, encrypted, "табличного")
         
         with col2:
-            st.subheader("🔓 Расшифровка")
+            st.subheader("Расшифровка")
             ciphertext = st.text_area(
                 "Текст для расшифровки:",
                 "",
@@ -146,12 +146,12 @@ class TrithemiusCipherModule(CryptoModule):
     
     def render_progressive_method(self, language):
         """Отрисовывает метод прогрессивного сдвига"""
-        st.subheader("📈 Метод прогрессивного сдвига")
+        st.subheader("Метод прогрессивного сдвига")
         
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("🔒 Шифрование")
+            st.subheader("Шифрование")
             plaintext = st.text_area(
                 "Исходный текст:",
                 "CRYPTO" if language == "Английский" else "ТЕКСТ",
@@ -171,7 +171,7 @@ class TrithemiusCipherModule(CryptoModule):
                     self.show_progressive_process(plaintext, encrypted, start_shift, language, "шифрования")
         
         with col2:
-            st.subheader("🔓 Расшифровка")
+            st.subheader("Расшифровка")
             ciphertext = st.text_area(
                 "Текст для расшифровки:",
                 "",
@@ -188,7 +188,7 @@ class TrithemiusCipherModule(CryptoModule):
         
         # Визуализация прогрессивного сдвига
         st.markdown("---")
-        st.subheader("🎯 Визуализация прогрессивного сдвига")
+        st.subheader("Визуализация прогрессивного сдвига")
         
         demo_text = st.text_input("Текст для демонстрации:", "ABC", key="demo_progressive")
         if st.button("Показать преобразование", key="demo_btn"):

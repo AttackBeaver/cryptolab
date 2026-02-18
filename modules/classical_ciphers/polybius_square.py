@@ -14,11 +14,11 @@ class PolybiusSquareModule(CryptoModule):
         self.order = 3
     
     def render(self):
-        st.title("🔳 Полибианский квадрат")
+        st.title("Полибианский квадрат")
         st.subheader("Древнегреческий шифр замены с координатной системой")
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка", expanded=False):
+        with st.expander("Теоретическая справка", expanded=False):
             st.markdown("""
             ### Полибианский квадрат (2 век до н.э.)
             
@@ -154,7 +154,7 @@ class PolybiusSquareModule(CryptoModule):
     
     def display_polybius_square(self, square, coordinate_system):
         """Отображает квадрат Полибия"""
-        st.markdown("### 🎯 Квадрат Полибия")
+        st.markdown("### Квадрат Полибия")
         
         rows = len(square)
         cols = len(square[0])
@@ -181,12 +181,12 @@ class PolybiusSquareModule(CryptoModule):
     
     def render_encryption_decryption(self, square, alphabet, coordinate_system, language):
         """Отрисовывает интерфейс шифрования и дешифрования"""
-        st.markdown("### 🔐 Шифрование и дешифрование")
+        st.markdown("### Шифрование и дешифрование")
         
         col1, col2 = st.columns(2)
         
         with col1:
-            st.markdown("#### 🔒 Шифрование")
+            st.markdown("#### Шифрование")
             plaintext = st.text_area(
                 "Текст для шифрования:",
                 "HELLO" if language == "Английский" else "ПРИВЕТ",
@@ -207,7 +207,7 @@ class PolybiusSquareModule(CryptoModule):
                     st.error("Введите текст для шифрования!")
         
         with col2:
-            st.markdown("#### 🔓 Дешифрование")
+            st.markdown("#### Дешифрование")
             ciphertext = st.text_area(
                 "Текст для дешифрования:",
                 "23 15 31 31 34" if language == "Английский" else "41 42 43 44 45 46",
@@ -378,9 +378,9 @@ class PolybiusSquareModule(CryptoModule):
     
     def render_additional_features(self, square, alphabet, coordinate_system):
         """Дополнительные возможности модуля"""
-        st.markdown("### 🎨 Дополнительные возможности")
+        st.markdown("### Дополнительные возможности")
         
-        tab1, tab2, tab3 = st.tabs(["📊 Анализ квадрата", "🎮 Интерактивная карта", "📚 Исторический контекст"])
+        tab1, tab2, tab3 = st.tabs(["Анализ квадрата", "Интерактивная карта", "Исторический контекст"])
         
         with tab1:
             self.analyze_square(square, alphabet)
@@ -393,7 +393,7 @@ class PolybiusSquareModule(CryptoModule):
     
     def analyze_square(self, square, alphabet):
         """Анализирует свойства квадрата Полибия"""
-        st.markdown("#### 📊 Анализ квадрата Полибия")
+        st.markdown("#### Анализ квадрата Полибия")
         
         rows = len(square)
         cols = len(square[0])
@@ -413,7 +413,7 @@ class PolybiusSquareModule(CryptoModule):
             st.metric("Эффективность", f"{efficiency:.1f}%")
         
         # Частотный анализ алфавита
-        st.markdown("##### 🔢 Частотный анализ")
+        st.markdown("##### Частотный анализ")
         
         # Создаем "частотное распределение" по позициям в квадрате
         position_data = []
@@ -454,7 +454,7 @@ class PolybiusSquareModule(CryptoModule):
     
     def interactive_square_map(self, square, coordinate_system):
         """Интерактивная карта квадрата - упрощенная версия для Streamlit"""
-        st.markdown("#### 🎮 Интерактивная карта квадрата (работает некорректно)")
+        st.markdown("#### Интерактивная карта квадрата (работает некорректно)")
         
         st.info("Нажмите на ячейку, чтобы увидеть её координаты")
         
@@ -474,7 +474,7 @@ class PolybiusSquareModule(CryptoModule):
             row_headers = symbols[:rows]
         
         # Создаем интерактивную таблицу с помощью Streamlit
-        st.markdown("##### 🗺️ Карта квадрата (нажмите на ячейку)")
+        st.markdown("##### Карта квадрата (нажмите на ячейку)")
         
         # Отображаем заголовки столбцов
         col_header_str = "| | " + " | ".join(col_headers) + " |"
@@ -518,7 +518,7 @@ class PolybiusSquareModule(CryptoModule):
         
         # Альтернативный способ: выбор через selectbox
         st.markdown("---")
-        st.markdown("##### 🔍 Поиск по координатам")
+        st.markdown("##### Поиск по координатам")
         
         col1, col2 = st.columns(2)
         
@@ -547,7 +547,7 @@ class PolybiusSquareModule(CryptoModule):
             )
             
             # Показываем визуальное выделение
-            st.markdown("##### 🎯 Визуальное выделение выбранной ячейки")
+            st.markdown("##### Визуальное выделение выбранной ячейки")
             
             # Создаем визуализацию с выделением
             fig, ax = plt.subplots(figsize=(10, 8))
@@ -603,7 +603,7 @@ class PolybiusSquareModule(CryptoModule):
     
     def historical_context(self):
         """Исторический контекст Полибианского квадрата"""
-        st.markdown("#### 📚 Исторический контекст")
+        st.markdown("#### Исторический контекст")
         
         st.markdown("""
         **Древнегреческая криптография:**
@@ -613,7 +613,7 @@ class PolybiusSquareModule(CryptoModule):
         
         **Система передачи:**
         ```
-        🏛️ Акрополь          🗼 Другой холм
+        Акрополь              Другой холм
            ↑                       ↑
         Факелы: ЛЕВЫЙ-ПРАВЫЙ   Наблюдатель
          1-2-3-4-5             Записывает цифры
@@ -637,7 +637,7 @@ class PolybiusSquareModule(CryptoModule):
         """)
         
         # Визуализация древнегреческой системы
-        st.markdown("##### 🏛️ Визуализация древнегреческой системы")
+        st.markdown("##### Визуализация древнегреческой системы")
         
         fig, ax = plt.subplots(figsize=(12, 4))
         

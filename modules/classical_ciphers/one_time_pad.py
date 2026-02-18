@@ -17,7 +17,7 @@ class OneTimePadModule(CryptoModule):
         self.order = 9
     
     def render(self):
-        st.title("📓 Одноразовый блокнот (Шифр Вернама)")
+        st.title("Одноразовый блокнот (Шифр Вернама)")
         
         # Инициализация состояний
         if 'otp_encrypt_key' not in st.session_state:
@@ -26,7 +26,7 @@ class OneTimePadModule(CryptoModule):
             st.session_state.otp_encrypt_key_generated = ""
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка", expanded=False):
+        with st.expander("Теоретическая справка", expanded=False):
             st.markdown("""
             **Одноразовый блокнот (Шифр Вернама)** - единственная известная криптосистема, обладающая **идеальной криптографической стойкостью**.
             
@@ -43,10 +43,10 @@ class OneTimePadModule(CryptoModule):
             3. Для дешифрования применяется та же операция с тем же ключом
             
             **Условия идеальной стойкости:**
-            - ✅ Ключ **истинно случайный**
-            - ✅ Ключ **той же длины**, что и сообщение
-            - ✅ Ключ **никогда не используется повторно**
-            - ✅ Ключ **хранится в секрете**
+            - Ключ **истинно случайный**
+            - Ключ **той же длины**, что и сообщение
+            - Ключ **никогда не используется повторно**
+            - Ключ **хранится в секрете**
             
             **Теорема Шеннона:** Если выполнены все условия, то взлом невозможен даже при бесконечных вычислительных ресурсах.
             """)
@@ -56,13 +56,13 @@ class OneTimePadModule(CryptoModule):
         # Выбор режима работы
         mode = st.radio(
             "Режим работы:",
-            ["🔐 Шифрование/Дешифрование", "🎯 Визуализация процесса", "🔬 Криптоанализ"],
+            ["Шифрование/Дешифрование", "Визуализация процесса", "Криптоанализ"],
             horizontal=True
         )
         
-        if mode == "🔐 Шифрование/Дешифрование":
+        if mode == "Шифрование/Дешифрование":
             self.render_encryption_section()
-        elif mode == "🎯 Визуализация процесса":
+        elif mode == "Визуализация процесса":
             self.render_visualization_section()
         else:
             self.render_cryptanalysis_section()
@@ -107,11 +107,11 @@ class OneTimePadModule(CryptoModule):
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("🔒 Шифрование")
+            st.subheader("Шифрование")
             self.render_encryption()
         
         with col2:
-            st.subheader("🔓 Расшифровка")
+            st.subheader("Расшифровка")
             self.render_decryption()
     
     def render_encryption(self):
@@ -146,7 +146,7 @@ class OneTimePadModule(CryptoModule):
         with col_gen:
             st.write("")  # Отступ
             st.write("")  # Отступ
-            if st.button("🎲 Сгенерировать ключ", key="gen_encrypt_key", use_container_width=True):
+            if st.button("Сгенерировать ключ", key="gen_encrypt_key", use_container_width=True):
                 if plaintext:
                     text_binary = self.text_to_binary(plaintext)
                     random_key = self.generate_random_key(len(text_binary))
@@ -238,7 +238,7 @@ class OneTimePadModule(CryptoModule):
     
     def render_visualization_section(self):
         """Отрисовывает секцию визуализации"""
-        st.subheader("🎯 Визуализация работы одноразового блокнота")
+        st.subheader("Визуализация работы одноразового блокнота")
         
         # Инициализация состояния для визуализации
         if 'viz_otp_text' not in st.session_state:
@@ -284,7 +284,7 @@ class OneTimePadModule(CryptoModule):
         
         # Демонстрация обратимости
         st.markdown("---")
-        st.subheader("🔄 Свойство обратимости")
+        st.subheader("Свойство обратимости")
         
         # Инициализация состояния для обратимости
         if 'reversible_demo' not in st.session_state:
@@ -304,7 +304,7 @@ class OneTimePadModule(CryptoModule):
     
     def render_cryptanalysis_section(self):
         """Отрисовывает секцию криптоанализа"""
-        st.subheader("🔬 Криптоанализ одноразового блокнота")
+        st.subheader("Криптоанализ одноразового блокнота")
         
         st.markdown("""
         ### Почему одноразовый блокнот невозможно взломать?
@@ -316,7 +316,7 @@ class OneTimePadModule(CryptoModule):
         """)
         
         # Демонстрация множества возможных расшифровок
-        st.markdown("### 🎲 Демонстрация множества возможных расшифровок")
+        st.markdown("### Демонстрация множества возможных расшифровок")
         
         # Инициализация состояния для криптоанализа
         if 'crypto_demo' not in st.session_state:
@@ -336,7 +336,7 @@ class OneTimePadModule(CryptoModule):
         
         # Демонстрация проблемы повторного использования ключа
         st.markdown("---")
-        st.subheader("⚠️ Опасность повторного использования ключа")
+        st.subheader("Опасность повторного использования ключа")
         
         # Инициализация состояний для повторного использования
         if 'reuse_text1' not in st.session_state:
@@ -446,7 +446,7 @@ class OneTimePadModule(CryptoModule):
         key_binary = self.generate_random_key(len(text_binary))
         encrypted_binary = self.xor_operation(text_binary, key_binary)
         
-        st.markdown("### 🔍 Пошаговая визуализация:")
+        st.markdown("### Пошаговая визуализация:")
         
         for i, char in enumerate(text):
             st.markdown(f"**Символ {i+1}: '{char}'**")
@@ -518,7 +518,7 @@ class OneTimePadModule(CryptoModule):
                 st.error(f"```\n{decrypted_text}\n❌\n```")
             st.text(f"Бинарно: {decrypted_binary}")
         
-        st.success("✅ Свойство обратимости подтверждено: P ⊕ K ⊕ K = P")
+        st.success("Свойство обратимости подтверждено: P ⊕ K ⊕ K = P")
     
     def show_possible_decryptions(self, cipher_binary: str):
         """Показывает множество возможных расшифровок"""
@@ -565,7 +565,7 @@ class OneTimePadModule(CryptoModule):
             enc1 = self.xor_operation(self.text_to_binary(text1), key[:len(self.text_to_binary(text1))])
             enc2 = self.xor_operation(self.text_to_binary(text2), key[:len(self.text_to_binary(text2))])
         
-        st.error("⚠️ Обнаружено повторное использование ключа!")
+        st.error("Обнаружено повторное использование ключа!")
         
         # Показываем, как можно извлечь информацию
         st.markdown("**Извлечение информации через XOR шифротекстов:**")

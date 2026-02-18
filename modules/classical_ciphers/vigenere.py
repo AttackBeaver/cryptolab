@@ -13,10 +13,10 @@ class VigenereCipherModule(CryptoModule):
         self.order = 2
     
     def render(self):
-        st.title("🔐 Шифр Виженера")
+        st.title("Шифр Виженера")
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка"):
+        with st.expander("Теоретическая справка"):
             st.markdown("""
             **Шифр Виженера** - полиалфавитный шифр, усовершенствование шифра Цезаря.
             
@@ -51,7 +51,7 @@ class VigenereCipherModule(CryptoModule):
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("🔒 Шифрование")
+            st.subheader("Шифрование")
             plaintext = st.text_area(
                 "Текст для шифрования:",
                 "ATTACKATDAWN" if language == "Английский" else "ПРИСТУПИТЕУТРОМ",
@@ -71,7 +71,7 @@ class VigenereCipherModule(CryptoModule):
                     self.show_encryption_process(plaintext, encrypt_key, language)
         
         with col2:
-            st.subheader("🔓 Расшифровка")
+            st.subheader("Расшифровка")
             ciphertext = st.text_area(
                 "Текст для расшифровки:",
                 "KXRKGIKXBKAL" if language == "Английский" else "ФЩРЮБЦЫЧСБФЩЛЭЪ",
@@ -88,14 +88,14 @@ class VigenereCipherModule(CryptoModule):
         
         # Визуализация таблицы Виженера
         st.markdown("---")
-        st.subheader("🎯 Таблица Виженера")
+        st.subheader("Таблица Виженера")
         
         if st.checkbox("Показать таблицу Виженера"):
             self.show_vigenere_table(language)
         
         # Демонстрация уязвимости
         st.markdown("---")
-        st.subheader("🔍 Демонстрация уязвимости")
+        st.subheader("Демонстрация уязвимости")
         
         if st.checkbox("Показать повторение ключа"):
             sample_text = "ДЛИННЫЙТЕКСТДЛЯДЕМОНСТРАЦИИ" if language == "Русский" else "LONGTEXTFORDEMONSTRATION"
@@ -111,7 +111,7 @@ class VigenereCipherModule(CryptoModule):
             })
             
             st.dataframe(df, use_container_width=True, hide_index=True)
-            st.warning("⚠️ Повторение ключа - основная уязвимость шифра Виженера!")
+            st.warning("Повторение ключа - основная уязвимость шифра Виженера!")
 
     def get_alphabet(self, language):
         """Возвращает алфавит для выбранного языка"""

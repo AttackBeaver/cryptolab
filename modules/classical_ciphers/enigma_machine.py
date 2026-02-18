@@ -59,14 +59,14 @@ class EnigmaMachineModule(CryptoModule):
         self.alphabet = string.ascii_uppercase
 
     def render(self):
-        st.title("⚙️ Машина Энигма")
+        st.title("Машина Энигма")
         
         # Инициализация session_state
         if 'enigma_initialized' not in st.session_state:
             self.initialize_session_state()
         
         # Теоретическая справка
-        with st.expander("📚 Историческая справка", expanded=False):
+        with st.expander("Историческая справка", expanded=False):
             st.markdown("""
             **Машина Энигма** - роторная шифровальная машина, использовавшаяся Германией во Второй мировой войне.
             
@@ -87,7 +87,7 @@ class EnigmaMachineModule(CryptoModule):
         st.markdown("---")
         
         # Основной интерфейс с вкладками
-        tab1, tab2, tab3, tab4 = st.tabs(["🎛️ Управление машиной", "🔐 Шифрование", "🎯 Визуализация", "📚 Обучение"])
+        tab1, tab2, tab3, tab4 = st.tabs(["Управление машиной", "Шифрование", "Визуализация", "Обучение"])
         
         with tab1:
             self.render_control_panel()
@@ -125,13 +125,13 @@ class EnigmaMachineModule(CryptoModule):
 
     def render_control_panel(self):
         """Панель управления настройками Энигмы"""
-        st.header("🎛️ Панель управления Энигмой")
+        st.header("Панель управления Энигмой")
         
         col1, col2 = st.columns([2, 1])
         
         with col1:
             # Выбор роторов и их позиций
-            st.subheader("🔧 Настройка роторов")
+            st.subheader("Настройка роторов")
             
             rotor_cols = st.columns(5)
             
@@ -197,7 +197,7 @@ class EnigmaMachineModule(CryptoModule):
             
         with col2:
             # Коммутационная панель
-            st.subheader("🔌 Коммутационная панель")
+            st.subheader("Коммутационная панель")
             st.markdown("Соедините буквы парами:")
             
             # Используем уникальный ключ для текстового поля
@@ -214,22 +214,22 @@ class EnigmaMachineModule(CryptoModule):
                 st.session_state.enigma_plugboard = plug_pairs
             
             # Статус машины
-            st.subheader("📊 Статус машины")
+            st.subheader("Статус машины")
             self.display_machine_status()
             
             # Кнопки быстрой настройки
-            st.subheader("⚡ Быстрые настройки")
-            if st.button("🎲 Случайные настройки", use_container_width=True, key="random_btn"):
+            st.subheader("Быстрые настройки")
+            if st.button("Случайные настройки", use_container_width=True, key="random_btn"):
                 self.random_settings()
                 st.rerun()
                 
-            if st.button("🔄 Сброс", use_container_width=True, key="reset_btn"):
+            if st.button("Сброс", use_container_width=True, key="reset_btn"):
                 self.reset_settings()
                 st.rerun()
 
     def render_encryption_section(self):
         """Секция шифрования/дешифрования"""
-        st.header("🔐 Шифрование текста")
+        st.header("Шифрование текста")
         
         col1, col2 = st.columns(2)
         
@@ -247,7 +247,7 @@ class EnigmaMachineModule(CryptoModule):
             if filtered_text != input_text:
                 st.warning(f"Удалены не-буквенные символы. Будет обработано: {filtered_text}")
             
-            if st.button("🔒 Зашифровать", use_container_width=True, key="encrypt_btn"):
+            if st.button("Зашифровать", use_container_width=True, key="encrypt_btn"):
                 if filtered_text:
                     encrypted = self.encrypt_text(filtered_text)
                     st.session_state.enigma_output = encrypted
@@ -266,32 +266,32 @@ class EnigmaMachineModule(CryptoModule):
             if st.session_state.last_processed:
                 st.info(f"Обработано: {st.session_state.last_processed}")
             
-            if st.button("📋 Копировать результат", use_container_width=True, key="copy_btn"):
+            if st.button("Копировать результат", use_container_width=True, key="copy_btn"):
                 st.code(output_text)
 
         # Детализация процесса для последнего символа
         if st.session_state.get('last_processed'):
-            st.subheader("🔍 Детализация процесса")
+            st.subheader("Детализация процесса")
             self.show_encryption_details(st.session_state.last_processed)
 
     def render_visualization(self):
         """Визуализация работы машины"""
-        st.header("🎯 Визуализация работы Энигмы")
+        st.header("Визуализация работы Энигмы")
         
         # 3D визуализация роторов
-        st.subheader("🔄 Визуализация роторов")
+        st.subheader("Визуализация роторов")
         self.visualize_rotors()
         
         # Диаграмма пути сигнала
-        st.subheader("📡 Путь сигнала через машину")
+        st.subheader("Путь сигнала через машину")
         if st.session_state.last_signal_path:
             self.visualize_signal_path(st.session_state.last_signal_path)
         
         # Анимация работы
-        st.subheader("🎬 Анимация процесса")
+        st.subheader("Анимация процесса")
         demo_char = st.selectbox("Выберите букву для демонстрации:", list(self.alphabet), index=7, key="demo_char_select")
         
-        if st.button("▶️ Запустить анимацию", key="animate_btn"):
+        if st.button("Запустить анимацию", key="animate_btn"):
             # Создаем правильные роторы для демонстрации
             rotors = self.create_demo_rotors()
             plugboard = self.set_plugboard(st.session_state.enigma_plugboard)
@@ -303,12 +303,12 @@ class EnigmaMachineModule(CryptoModule):
 
     def render_education_section(self):
         """Образовательный раздел"""
-        st.header("📚 Обучение работе с Энигмой")
+        st.header("Обучение работе с Энигмой")
         
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("🧩 Компоненты Энигмы")
+            st.subheader("Компоненты Энигмы")
             
             components = {
                 "Роторы": "Выполняют замену. Поворачиваются после каждого символа",
@@ -318,11 +318,11 @@ class EnigmaMachineModule(CryptoModule):
             }
             
             for comp, desc in components.items():
-                with st.expander(f"🔧 {comp}"):
+                with st.expander(f"{comp}"):
                     st.write(desc)
         
         with col2:
-            st.subheader("🎯 Принцип работы")
+            st.subheader("Принцип работы")
             
             st.markdown("""
             1. **Ввод символа** → Коммутационная панель
@@ -333,7 +333,7 @@ class EnigmaMachineModule(CryptoModule):
             6. **Поворот роторов** после каждого символа
             """)
             
-            st.subheader("🔐 Криптоанализ")
+            st.subheader("Криптоанализ")
             st.markdown("""
             - **Повторяемость**: 26³ = 17,576 начальных позиций
             - **Уязвимости**: Невозможность шифрования буквы самой в себя
@@ -387,9 +387,9 @@ class EnigmaMachineModule(CryptoModule):
         plugboard = self.set_plugboard(st.session_state.enigma_plugboard)
         if plugboard:
             plugs = [f"{k}{v}" for k, v in plugboard.items() if k < v]
-            st.write(f"🔌 Соединения: {', '.join(plugs)}")
+            st.write(f"Соединения: {', '.join(plugs)}")
         else:
-            st.write("🔌 Соединения: нет")
+            st.write("Соединения: нет")
             
         st.write(f"🪞 Рефлектор: {st.session_state.enigma_reflector.value}")
 
@@ -528,7 +528,7 @@ class EnigmaMachineModule(CryptoModule):
             st.dataframe(df, use_container_width=True, hide_index=True)
             
             # Показываем текущие позиции роторов
-            st.subheader("📊 Текущие позиции роторов")
+            st.subheader("Текущие позиции роторов")
             positions = [chr(65 + (st.session_state.enigma_positions[i] + len(text)) % 26) for i in range(3)]
             
             col1, col2, col3 = st.columns(3)
@@ -683,7 +683,7 @@ class EnigmaMachineModule(CryptoModule):
         ))
         
         fig.update_layout(
-            title=f"🔐 Анимация шифрования буквы '{char}' → '{signals[-1]}'",
+            title=f"Анимация шифрования буквы '{char}' → '{signals[-1]}'",
             xaxis=dict(
                 title='Этапы шифрования',
                 tickvals=list(range(len(steps))),

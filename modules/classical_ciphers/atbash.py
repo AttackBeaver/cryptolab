@@ -13,10 +13,10 @@ class AtbashCipherModule(CryptoModule):
         self.order = 6
     
     def render(self):
-        st.title("🔄 Шифр Атбаш")
+        st.title("Шифр Атбаш")
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка", expanded=False):
+        with st.expander("Теоретическая справка", expanded=False):
             st.markdown("""
             **Шифр Атбаш** - один из древнейших моноалфавитных шифров подстановки, использовавшийся еще в древнееврейском языке.
             
@@ -51,7 +51,7 @@ class AtbashCipherModule(CryptoModule):
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("🔒 Шифрование")
+            st.subheader("Шифрование")
             plaintext = st.text_area(
                 "Исходный текст:",
                 "HELLO WORLD" if language == "Английский" else "ПРИВЕТ МИР",
@@ -68,7 +68,7 @@ class AtbashCipherModule(CryptoModule):
                 self.show_text_stats(plaintext, encrypted, "шифрования")
         
         with col2:
-            st.subheader("🔓 Расшифровка")
+            st.subheader("Расшифровка")
             default_cipher = "SVOOL DLIOW" if language == "Английский" else "ПРИВЕТ МИР"
             ciphertext = st.text_area(
                 "Текст для расшифровки:",
@@ -87,14 +87,14 @@ class AtbashCipherModule(CryptoModule):
         
         # Визуализация алфавита
         st.markdown("---")
-        st.subheader("🎯 Визуализация преобразования алфавита")
+        st.subheader("Визуализация преобразования алфавита")
         
         if st.checkbox("Показать таблицу преобразования алфавита"):
             self.show_alphabet_table(language)
             
         # Демонстрация инволюции
         st.markdown("---")
-        st.subheader("🔁 Демонстрация свойства инволюции")
+        st.subheader("Демонстрация свойства инволюции")
         
         demo_text = st.text_input(
             "Текст для демонстрации:",

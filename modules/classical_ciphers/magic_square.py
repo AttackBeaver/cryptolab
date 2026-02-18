@@ -26,11 +26,11 @@ class MagicSquareModule(CryptoModule):
             st.session_state.decrypted_message = ""
     
     def render(self):
-        st.title("🔢 Магический квадрат")
+        st.title("Магический квадрат")
         st.subheader("Криптография с использованием магических квадратов")
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка", expanded=False):
+        with st.expander("Теоретическая справка", expanded=False):
             st.markdown("""
             ### Магические квадраты в криптографии
             
@@ -53,22 +53,22 @@ class MagicSquareModule(CryptoModule):
         # Выбор режима работы
         mode = st.radio(
             "Режим работы:",
-            ["🎲 Создание квадратов", "🔐 Шифрование", "🔓 Дешифрование", "📊 Анализ"],
+            ["Создание квадратов", "Шифрование", "Дешифрование", "Анализ"],
             horizontal=True
         )
         
-        if mode == "🎲 Создание квадратов":
+        if mode == "Создание квадратов":
             self.render_square_creation()
-        elif mode == "🔐 Шифрование":
+        elif mode == "Шифрование":
             self.render_encryption()
-        elif mode == "🔓 Дешифрование":
+        elif mode == "Дешифрование":
             self.render_decryption()
         else:
             self.render_analysis()
     
     def render_square_creation(self):
         """Создание магических квадратов"""
-        st.markdown("### 🎲 Создание магических квадратов")
+        st.markdown("### Создание магических квадратов")
         
         col1, col2 = st.columns(2)
         
@@ -87,7 +87,7 @@ class MagicSquareModule(CryptoModule):
                 index=0
             )
             
-            if st.button("🎯 Создать магический квадрат", type="primary"):
+            if st.button("Создать магический квадрат", type="primary"):
                 with st.spinner("Создаю магический квадрат..."):
                     try:
                         magic_square = self.generate_magic_square(square_size, generation_method)
@@ -106,7 +106,7 @@ class MagicSquareModule(CryptoModule):
                 magic_square = st.session_state.magic_square
                 square_size = st.session_state.square_size
                 
-                st.success(f"### 🎉 Магический квадрат {square_size}×{square_size}")
+                st.success(f"### Магический квадрат {square_size}×{square_size}")
                 
                 # Вычисляем магическую константу
                 magic_constant = self.calculate_magic_constant(square_size)
@@ -122,7 +122,7 @@ class MagicSquareModule(CryptoModule):
         
         # Примеры известных магических квадратов
         st.markdown("---")
-        st.markdown("#### 📚 Известные магические квадраты")
+        st.markdown("#### Известные магические квадраты")
         
         tab1, tab2 = st.tabs(["Ло Шу (3×3)", "Дюрер (4×4)"])
         
@@ -140,11 +140,11 @@ class MagicSquareModule(CryptoModule):
     
     def render_encryption(self):
         """Шифрование с использованием магического квадрата"""
-        st.markdown("### 🔐 Шифрование магическим квадратом")
+        st.markdown("### Шифрование магическим квадратом")
         
         # Проверяем наличие квадрата
         if st.session_state.magic_square is None:
-            st.error("❌ Сначала создайте магический квадрат!")
+            st.error("Сначала создайте магический квадрат!")
             st.info("Перейдите в режим 'Создание квадратов'")
             return
         
@@ -162,7 +162,7 @@ class MagicSquareModule(CryptoModule):
                 help=f"Максимум {square_size*square_size} символов"
             )
             
-            if st.button("🔒 Зашифровать", type="primary"):
+            if st.button("Зашифровать", type="primary"):
                 if not plaintext.strip():
                     st.error("Введите текст для шифрования!")
                     return
@@ -186,18 +186,18 @@ class MagicSquareModule(CryptoModule):
                 
                 # Показываем процесс заполнения
                 if hasattr(st.session_state, 'last_plaintext'):
-                    st.markdown("#### 📊 Процесс заполнения")
+                    st.markdown("#### Процесс заполнения")
                     self.show_filling_process(st.session_state.last_plaintext, magic_square, square_size)
             else:
                 st.info("Введите текст и нажмите 'Зашифровать'")
         
         # Показываем используемый квадрат
         st.markdown("---")
-        st.markdown("#### 🎯 Используемый магический квадрат")
+        st.markdown("#### Используемый магический квадрат")
         self.display_magic_square(magic_square, square_size)
         
         # Инструкция по дешифровке
-        st.markdown("#### 💡 Инструкция для дешифровки")
+        st.markdown("#### Инструкция для дешифровки")
         st.info(f"""
         Для дешифровки получателю нужны:
         1. **Этот магический квадрат** {square_size}×{square_size}
@@ -207,7 +207,7 @@ class MagicSquareModule(CryptoModule):
     
     def render_decryption(self):
         """Дешифрование с использованием магического квадрата"""
-        st.markdown("### 🔓 Дешифрование магическим квадратом")
+        st.markdown("### Дешифрование магическим квадратом")
         
         col1, col2 = st.columns(2)
         
@@ -229,7 +229,7 @@ class MagicSquareModule(CryptoModule):
                 use_saved_square = False
                 st.warning("Используется стандартный квадрат")
             
-            if st.button("🔓 Дешифровать", type="primary"):
+            if st.button("Дешифровать", type="primary"):
                 if not ciphertext.strip():
                     st.error("Введите зашифрованный текст!")
                     return
@@ -252,7 +252,7 @@ class MagicSquareModule(CryptoModule):
             if st.session_state.decrypted_message:
                 decrypted = st.session_state.decrypted_message
                 
-                st.success("### 🎉 Дешифрованное сообщение")
+                st.success("### Дешифрованное сообщение")
                 st.text_area("Результат:", decrypted, height=100, key="decrypted_output")
                 
                 # Проверяем качество дешифровки
@@ -262,12 +262,12 @@ class MagicSquareModule(CryptoModule):
                     
                     if original_clean == decrypted_clean:
                         st.balloons()
-                        st.success("🎉 Дешифровка полностью совпадает с оригиналом!")
+                        st.success("Дешифровка полностью совпадает с оригиналом!")
                     else:
-                        st.warning("⚠️ Дешифровка не полностью совпадает с оригиналом")
+                        st.warning("Дешифровка не полностью совпадает с оригиналом")
                 
                 # Показываем использованный квадрат
-                st.markdown("#### 🎯 Использованный квадрат")
+                st.markdown("#### Использованный квадрат")
                 if use_saved_square and st.session_state.magic_square is not None:
                     self.display_magic_square(st.session_state.magic_square, square_size)
                 else:
@@ -278,7 +278,7 @@ class MagicSquareModule(CryptoModule):
     
     def render_analysis(self):
         """Анализ магических квадратов"""
-        st.markdown("### 📊 Анализ магических квадратов")
+        st.markdown("### Анализ магических квадратов")
         
         st.info("""
         **Криптографические свойства магических квадратов:**
@@ -296,7 +296,7 @@ class MagicSquareModule(CryptoModule):
         """)
         
         # Математические свойства
-        st.markdown("#### 🧮 Математические свойства")
+        st.markdown("#### Математические свойства")
         
         sizes = [3, 4, 5]
         data = []
@@ -314,7 +314,7 @@ class MagicSquareModule(CryptoModule):
         st.dataframe(pd.DataFrame(data), use_container_width=True, hide_index=True)
         
         # Генерация примеров
-        if st.button("🔄 Сгенерировать примеры квадратов"):
+        if st.button("Сгенерировать примеры квадратов"):
             self.show_examples()
     
     def generate_magic_square(self, n, method):
@@ -433,7 +433,7 @@ class MagicSquareModule(CryptoModule):
             
         magic_constant = self.calculate_magic_constant(size)
         
-        st.markdown("#### ✅ Проверка магических свойств")
+        st.markdown("#### Проверка магических свойств")
         
         # Проверяем строки
         row_sums = square.sum(axis=1)

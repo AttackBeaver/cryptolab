@@ -15,10 +15,10 @@ class GronsfeldCipherModule(CryptoModule):
         self.order = 8
     
     def render(self):
-        st.title("🔢 Шифр Гронсфельда")
+        st.title("Шифр Гронсфельда")
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка", expanded=False):
+        with st.expander("Теоретическая справка", expanded=False):
             st.markdown("""
             **Шифр Гронсфельда** - полиалфавитный шифр, разработанный графом Гронсфельдом в XVII веке как усовершенствование шифра Виженера.
             
@@ -179,7 +179,7 @@ class GronsfeldCipherModule(CryptoModule):
     
     def render_encryption_section(self, language):
         """Отрисовывает секцию шифрования"""
-        st.subheader("🔒 Шифрование")
+        st.subheader("Шифрование")
         
         # Инициализация состояния для генерации ключа
         if 'gronsfeld_encrypt_key' not in st.session_state:
@@ -210,7 +210,7 @@ class GronsfeldCipherModule(CryptoModule):
             with col_gen:
                 st.write("")  # Отступ
                 st.write("")  # Отступ
-                if st.button("🎲 Сгенерировать", key="gen_encrypt_key", use_container_width=True):
+                if st.button("Сгенерировать", key="gen_encrypt_key", use_container_width=True):
                     random_key = ''.join(str(random.randint(0, 9)) for _ in range(6))
                     st.session_state.gronsfeld_encrypt_key = random_key
                     st.rerun()
@@ -236,7 +236,7 @@ class GronsfeldCipherModule(CryptoModule):
     
     def render_decryption_section(self, language):
         """Отрисовывает секцию дешифрования"""
-        st.subheader("🔓 Расшифровка")
+        st.subheader("Расшифровка")
         
         # Инициализация состояния для генерации ключа
         if 'gronsfeld_decrypt_key' not in st.session_state:
@@ -267,7 +267,7 @@ class GronsfeldCipherModule(CryptoModule):
             with col_gen:
                 st.write("")  # Отступ
                 st.write("")  # Отступ
-                if st.button("🎲 Сгенерировать", key="gen_decrypt_key", use_container_width=True):
+                if st.button("Сгенерировать", key="gen_decrypt_key", use_container_width=True):
                     random_key = ''.join(str(random.randint(0, 9)) for _ in range(6))
                     st.session_state.gronsfeld_decrypt_key = random_key
                     st.rerun()
@@ -293,9 +293,9 @@ class GronsfeldCipherModule(CryptoModule):
     
     def render_tools_section(self, language):
         """Отрисовывает дополнительные инструменты"""
-        st.subheader("🛠️ Инструменты анализа")
+        st.subheader("Инструменты анализа")
         
-        tab1, tab2, tab3 = st.tabs(["📊 Визуализация", "🔍 Сравнение с Виженером", "🎯 Демонстрация"])
+        tab1, tab2, tab3 = st.tabs(["Визуализация", "Сравнение с Виженером", "Демонстрация"])
         
         with tab1:
             self.render_visualization_tab(language)
@@ -445,13 +445,13 @@ class GronsfeldCipherModule(CryptoModule):
             col1, col2 = st.columns(2)
             
             with col1:
-                st.markdown("**🔢 Шифр Гронсфельда**")
+                st.markdown("**Шифр Гронсфельда**")
                 st.metric("Исходный текст", text)
                 st.metric("Ключ", gronsfeld_key)
                 st.metric("Результат", gronsfeld_encrypted)
             
             with col2:
-                st.markdown("**🔤 Шифр Виженера**")
+                st.markdown("**Шифр Виженера**")
                 st.metric("Исходный текст", text)
                 st.metric("Ключ", vigenere_key)
                 st.metric("Результат", vigenere_encrypted)

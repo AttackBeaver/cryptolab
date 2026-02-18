@@ -12,10 +12,10 @@ class CaesarCipherModule(CryptoModule):
         self.order = 1
     
     def render(self):
-        st.title("🔐 Шифр Цезаря")
+        st.title("Шифр Цезаря")
         
         # Теоретическая справка
-        with st.expander("📚 Теоретическая справка"):
+        with st.expander("Теоретическая справка"):
             st.markdown("""
             **Шифр Цезаря** - один из древнейших шифров, названный в честь Юлия Цезаря.
             
@@ -51,7 +51,7 @@ class CaesarCipherModule(CryptoModule):
         col1, col2 = st.columns(2)
         
         with col1:
-            st.subheader("🔒 Шифрование")
+            st.subheader("Шифрование")
             text = st.text_input("Текст для шифрования:", "HELLO" if language == "Английский" else "ПРИВЕТ", key="encrypt_text")
             
             if st.button("Зашифровать", key="encrypt_btn"):
@@ -66,7 +66,7 @@ class CaesarCipherModule(CryptoModule):
                         st.info(f"Пример: {first_letter} → {encrypted_letter}")
         
         with col2:
-            st.subheader("🔓 Расшифровка")
+            st.subheader("Расшифровка")
             default_cipher = "KHOOR" if language == "Английский" else "ТУЛЕУ"
             cipher_text = st.text_input("Текст для расшифровки:", default_cipher, key="decrypt_text")
             shift_decrypt = st.slider("Сдвиг для расшифровки:", 1, max_shift, 3, key="decrypt_shift")
@@ -77,7 +77,7 @@ class CaesarCipherModule(CryptoModule):
         
         # Визуализация алфавита
         st.markdown("---")
-        st.subheader("🎯 Визуализация преобразования")
+        st.subheader("Визуализация преобразования")
         
         if st.checkbox("Показать таблицу преобразования алфавита"):
             self.show_alphabet_table(shift, language)
